@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Sederhana || JS</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+        }
+        .body1 button{
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            background-color: #a1b8b2;
+        }
+        .body1 button:hover{                        filter: drop-shadow(3px 5px 3px rgba(0,0,0));
+
+            background-color: #a1b8b2ab;
+        }
+    #bl,#bp{
+        filter: drop-shadow(2px 5px 1px rgb(82, 84, 86));
+        background-color: #96aaa5;
+        cursor: pointer;
+    }
+    #bl:hover,#bp:hover{
+        filter: none;
+        
+       background-color: #979692d2;
+    }
+    </style>
+    <div class="title">
+        <h2 style="text-align: center; margin-bottom: 10px;">Permainan Batu Gunting Kertas</h2>
+        <p id="bt" style="text-align: center; font-weight: 700; font-size: 19px; margin: auto; border-radius: 5px; color: #fff;"></p>
+    </div>
+    <div class="body1" style="display: flex; justify-content: center;
+    align-items: center;margin-top: 10px;">
+       
+       <button style="margin-bottom: 5px; margin-right: 20px;" onclick="
+        algoritma('batu');
+  ;
+        "><img src="batu.png" alt=""></button>
+
+        <button style="margin-bottom: 5px; margin-right: 20px;" onclick="
+     
+           algoritma('kertas');
+            "><img src="kertas.png" alt=""></button>
+
+        <button style="margin-bottom: 5px;" onclick="
+  	      algoritma('gunting');
+         
+            "><img src="gunting.png" alt=""></button>
+</div>
+<div class="hasil-head" style="width: 500px;  background-color: #a38324c3; justify-content: center; align-items: center; display: flex; height: 200px;margin-left: auto; margin-right: auto; margin-bottom: 10px; margin-top: 10px;border-radius: 5px; box-shadow: 5px 3px 4px rgb(81, 80, 80);">
+
+    <div id="hasil">
+       <p style="font-weight: 500;font-size: 20px; ">Selamat Datang Di Game Sederhana <br>Gunting Batu Kertas</p>
+       <p style="font-weight: 300;">By Rizki Afridho</p>
+     
+</div>
+</div>
+
+<div class="button-akhir" style="display: flex; justify-content: center;
+align-items: center;">
+<button  id="bl" style="width: 150px; height: 35px; border-radius: 5px;  border: none;margin-right: 5px;" onclick="
+hasilend = document.getElementById('hasil');
+mulai = '';
+ bt.style.width = '';
+   bt.style.height = '';
+   bt.style.backgroundColor = '';
+bt.innerHTML = '';
+hasilend.innerHTML ='<h2>Terimakasih Sudah Bermain</h2>   <p>By Rizki Afridho Ganteng</p>';
+">End Game</button>
+   
+   <button id="bp" style="width: 150px; height: 35px; border-radius: 5px;  border: none;"onclick="
+
+ mulai +=1;
+     
+hasilend = document.getElementById('hasil');
+
+hasilend.innerHTML = '<h2>Silahkan Pilih Jagoan Anda!</h2> Terdapat Batu,Gunting,Kertas';
+bt = document.getElementById('bt');
+bt.innerHTML = '<p>Silahkan Pilih </p>'
+bt.style.width = '200px';
+bt.style.height = '30px';
+bt.style.backgroundColor = 'rgb(134, 129, 129)';
+   ">Mulai Main</button>
+
+</div>
+
+<div class="footer" style="display: flex; bottom: 0; position: absolute;background-color: #393737; color: #fff; width: 100%;height: 30px;justify-content: center;align-items: center;">
+    <p>&copy;</p>
+    <p>Ahmad Rizki Afridho</p>
+</div>
+
+  <script>
+    let hasil = '';
+       let hasilend = document.getElementById('hasil'); 
+        hasilend.style.display = 'grid';
+        let result ='';
+        let nilaiAkhir = '';
+        let playerImg = '';
+      let mulai = '';
+
+      
+      function brain(){
+        hasilAngka = Math.random();
+        if(hasilAngka <=  1/3){
+            hasil = 'batu';
+            
+        } else if(hasilAngka <= 2/3){
+            hasil = 'gunting';
+        } else if(hasilAngka <=  3/3){
+            hasil = 'kertas';
+        }
+        console.log(`Pilihan Komputer : ${hasil}`);
+    };
+  
+   
+    function algoritma(pilihanPlayer){
+        if(mulai <= 0) {
+      alert('Silahkan Klick Tombol Mulai')
+    } else if(mulai > 0){
+        brain();
+        if(pilihanPlayer === 'batu'){
+            if(hasil === 'batu'){
+               playerImg = 'batu.png';
+             result =  'batu.png';
+              nilaiAkhir =  'Hasil Seri';
+           } else if(hasil === 'gunting'){
+             playerImg = 'batu.png';
+             result = 'gunting.png';
+             nilaiAkhir = 'Kamu Menang';
+           } else if(hasil === 'kertas'){
+             playerImg = 'batu.png';
+             result = 'kertas.png';
+           nilaiAkhir =  'Kamu Kalah';
+           }
+             
+            } else if(pilihanPlayer === 'kertas'){
+            if(hasil === 'kertas'){
+               playerImg = 'kertas.png';
+             result =  'kertas.png';
+              nilaiAkhir =  'Hasil Seri';
+           } else if(hasil === 'gunting'){
+             playerImg = 'kertas.png';
+             result = 'gunting.png';
+             nilaiAkhir = 'Kamu Kalah';
+           } else if(hasil === 'batu'){
+             playerImg = 'kertas.png';
+             result = 'batu.png';
+           nilaiAkhir =  'Kamu Menang';
+           } 
+        }else if(pilihanPlayer === 'gunting'){
+            if(hasil === 'gunting'){
+               playerImg = 'gunting.png';
+             result =  'gunting.png';
+              nilaiAkhir =  'Hasil Seri';
+           } else if(hasil === 'kertas'){
+             playerImg = 'gunting.png';
+             result = 'kertas.png';
+             nilaiAkhir = 'Kamu Menang';
+           } else if(hasil === 'batu'){
+             playerImg = 'gunting.png';
+             result = 'batu.png';
+           nilaiAkhir =  'Kamu Kalah';
+           }
+        }
+        
+         hasilend.innerHTML = '<h2>Hasil Pertandingan</h2>'+'<p>Anda Memilih : <img src = "' + playerImg + '" style = "width : 40px;"+ /></p>'+'<p>Komputer Memilih : <img src = "' + result+'" style = "max-width : 40px;" + /></p>' + '<p style = "margin-top : 25px";>Hasil Pertandingan : ' + nilaiAkhir + '</p>';
+      
+    }
+  };
+
+
+  </script>
+</body>
+</html>
