@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cart Quantity</title>
+  </head>
+  <body>
+    <style>
+      * {
+    
+        margin: 0;
+        padding: 0;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      }
+      button{
+        width: 130px;
+        height: 35px;
+        border: none;
+        margin: 15px;
+        border-radius: 6px;
+        filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.5));
+        background-color: antiquewhite;
+        cursor: pointer;
+      }
+      button:hover{
+       background-color: #47696eb5;
+        filter: none;
+      }
+      
+    </style>
+    <div class="title-head" style="text-align: center;">
+      <h2 style="margin-top: 30px;">Tabel Belanja Sederhana </h2>
+      <p style="margin-bottom: 50px;">Menggunakan Java Scripts</p>
+    </div>
+  <div class="head-body" style="background-color: beige; min-height: 50vh; width: 800px; margin: auto; border-radius: 20px;">
+
+ 
+    <div class="btn-atas" style="display: flex; justify-content: center;">
+
+      <button style="margin-top: 30px;" onclick="
+   update()
+   ">Show Quantity</button>
+
+<button style="margin-top: 30px;" onclick="
+ update('1');
+ 
+ ">Add to Cart</button>
+ </div>
+<div class="btn-1" style="display: flex; justify-content: center;">
+    <button onclick="
+      update('2')
+    ">+2</button>
+
+    <button onclick="
+     update('3')
+    ">+3</button>
+
+    <button onclick="
+     update('4')
+    ">+4</button>
+
+</div>
+    <!-- vvv This code was changed. vvv -->
+     <div style="display: flex; justify-content: center;" class="btn-2" >
+
+
+    <button onclick="
+     update('5')
+    ">+5</button>
+
+    <button onclick="
+     update('-2')
+    ">-2</button>
+
+    <button onclick="
+     update('-3');
+    ">-3</button>
+    <!-- ^^^ This code was changed. ^^^ -->
+  </div>
+     <div class="btn-3" style="display: flex; justify-content: center;">
+
+       <button onclick="
+    update('rfc');
+    ">Remove from cart</button>
+
+<button onclick="
+     update('reset');
+     ">Reset Cart</button>
+</div>
+<div id="hasil" style="width: 300px; height: 100px; background-color: rgb(220, 220, 220); margin: auto; margin-top: 10px; border-radius: 5px;">
+</div>
+<button style="display: flex; justify-content: center; align-items: center; margin: auto; margin-top: 20px;"onclick="
+hasil.style.textAlign = 'center';
+hasil.style.display = 'flex';
+hasil.style.justifyContent = 'center';
+hasil.style.alignItems = 'center';
+    if(cartQuantity <= 0){
+      hasil.innerHTML = 'Keranjang Masih Kosong';
+      alert('Keranjang Kosong');
+    } else if(cartQuantity > 0){
+      hasil.innerHTML = `Berhasil Checkout Semua Barang ,Keranjang : ${cartQuantity}`;
+      alert(`Sukses Checkout Barang Sebanyak : ${cartQuantity}`);
+      cartQuantity = 0;
+    }
+">Checkout</button>
+<p style="text-align: center ;margin-top: 45px; font-size: 14px;">By Rizki Afridho</p>
+<p style="text-align: center; font-size: 10px;">Klick Inspect Kemudian Konsole Untuk Melihat Proses</p>
+</div>
+
+    <script>
+      let hasil =  document.getElementById('hasil');
+        function update(angka){
+
+          if(angka === '1'){
+             if(cartQuantity < 10){
+    cartQuantity +=1;
+    
+  } else if(cartQuantity >=10){
+    hasil.innerHTML = 'Keranjang Penuh';
+    alert('keranjang Penuh');
+  }
+}
+          if(angka === '2'){
+             if(cartQuantity < 10){
+               cartQuantity +=2;
+               
+              } else if(cartQuantity >=10){
+                cartQuantity = 10;
+                  hasil.innerHTML = 'Keranjang Penuh';
+                alert('keranjang Penuh');
+  }
+}
+          if(angka === '3'){
+             if(cartQuantity < 10){
+    cartQuantity +=3;
+  } else if(cartQuantity >=10){
+     cartQuantity = 10;
+       hasil.innerHTML = 'Keranjang Penuh';
+    alert('keranjang Penuh');
+  }
+}
+          if(angka === '4'){
+             if(cartQuantity < 10){
+    cartQuantity +=4;
+    
+  } else if(cartQuantity >=10){
+    cartQuantity = 10;
+      hasil.innerHTML = 'Keranjang Penuh';
+    alert('keranjang Penuh');
+  }
+}
+          if(angka === '5'){
+             if(cartQuantity < 10){
+    cartQuantity +=5;
+    
+  } else if(cartQuantity >=10){
+      hasil.innerHTML = 'Keranjang Penuh';
+    alert('keranjang Penuh');
+  }
+
+}if(angka === 'rfc'){
+ if(cartQuantity <= 0){
+    hasil.innerHTML = 'Keranjang Penuh';
+        alert('Anda Belum Menambahkan Produk ');
+      } else if(cartQuantity >0){
+        cartQuantity -=1;
+      }
+    } if(angka === '-2'){
+       if(cartQuantity <= 0){
+          hasil.innerHTML = 'Keranjang Penuh';
+        alert('Anda Belum Menambahkan Produk ');
+      } else if(cartQuantity >0){
+        cartQuantity -=2;
+      }
+    } 
+    if(angka === '-3'){
+       if(cartQuantity <= 0){
+          hasil.innerHTML = 'Keranjang Penuh';
+        alert('Anda Belum Menambahkan Produk ');
+      } else if(cartQuantity >0){
+        cartQuantity -=3;
+      }
+    }
+    if(angka === 'reset'){
+      if(cartQuantity <= 0 ){
+        alert('Keranjang Masih Kosong');
+        hasil.innerHTML = 'Keranjang Anda Masih Kosong';
+      }      else if(cartQuantity > 0){
+            alert('Sukses Mereset Keranjang');
+              cartQuantity = 0;
+      }
+    } 
+styleH();
+ hasil.innerHTML = (`keranjang Anda : ${cartQuantity}`);
+        }
+        function styleH(){
+          hasil.style.textAlign = 'center';
+hasil.style.display = 'flex';
+hasil.style.justifyContent = 'center';
+hasil.style.alignItems = 'center';
+        }
+        styleH();
+        hasil.innerHTML = 'Silahkan Tambahkan Produk';
+      let cartQuantity = 0;
+    </script>
+  </body>
+</html>
