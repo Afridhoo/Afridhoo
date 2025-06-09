@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana || JS</title>
+  </head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+p{
+  letter-spacing: 5px;
+  /* margin-left: 20px; */
+  margin: 15px 20px  ;
+}
+  button{
+    
+    width: 50px;
+    height: 40px;
+    border: none;
+    background-color: antiquewhite;
+    border-radius: 5px;
+  }
+  button:hover{
+       background-color: rgba(250, 235, 215, 0.669);
+  }
+</style>
+  <body>
+    <div class="dev-0" style="width: 295px; height: 390px;filter: drop-shadow(1px 2px 2px rgb(134, 132, 132)); background-color: #fff; padding-bottom: 15px; margin: auto;margin-top: 145px; border-radius: 10px;">
+
+<p style="font-size: 13px; padding-top: 15px; letter-spacing: 0.5px;">Kalkulator Menggunakan Java Script</p>
+   
+    <div id="brain0" style="width: 250px;background-color: rgb(0, 0, 0); height: 55px; border-radius: 5px; color: #fff; font-size: 19px; font-weight: 700; letter-spacing: 2px; margin-left: 20px; margin-top: 20px;text-align: right; ">
+    
+    </div>
+    <p>
+      <button onclick="
+      update('1')
+       
+      ">1</button>
+
+      <button onclick="
+        update('2');
+      ">2</button>
+
+      <button onclick="
+       update('3')
+      ">3</button>
+
+      <button onclick="
+        update('+')
+      ">+</button>
+    </p>
+
+    <p>
+      <button onclick="
+       update('4')
+      ">4</button>
+
+      <button onclick="
+        update('5')
+      ">5</button>
+
+      <button onclick="
+        update('6')
+      ">6</button>
+
+      <button onclick="
+        update('-');
+      ">-</button>
+    </p>
+
+    <p>
+      <button onclick="
+        update('7')
+      ">7</button>
+
+      <button onclick="
+       update('8')
+      ">8</button>
+
+      <button onclick="
+        update('9')
+      ">9</button>
+
+      <button onclick="
+        update('*')
+      ">*</button>
+    </p>
+
+    <p>
+      <button onclick="
+        update('0')
+      ">0</button>
+
+      <button onclick="
+       update('.')
+      ">.</button>
+
+      <button onclick="
+        update('=');
+        
+      ">=</button>
+
+      <button onclick="
+       update('/')
+      ">/</button>
+    </p>
+
+    <p>
+      <button onclick="
+       update('clear')
+      ">Clear</button>
+    </p>
+ </div>
+    <script>
+      let head = document.getElementById('brain0');
+      let calculation = '';
+
+        function update(angka){
+            if(angka === '1'){
+              head.innerHTML = '1';
+            calculation += '1';
+            }else if(angka === '2'){
+            calculation += '2';
+            head.innerHTML = '2';
+            }else if(angka === '3'){
+              head.innerHTML = '3';
+                calculation += '3';
+            } else if(angka === '4'){
+                calculation +=4;
+                head.innerHTML = '4';
+            } else if(angka === '5'){
+              head.innerHTML = '5';
+                calculation +=5;
+            }else if(angka === '6'){
+                calculation +=6;
+                head.innerHTML = '6';
+            }else if(angka === '7'){
+                calculation +=7;
+                head.innerHTML = '7';
+            }else if(angka === '8'){
+                calculation +=8;
+                head.innerHTML = '8';
+            }else if(angka === '9'){
+                calculation +=9;
+                head.innerHTML = '9';
+            }else if(angka === '0'){
+                calculation +=0;
+                head.innerHTML = '0';
+            } else if(angka === '+'){
+                calculation += ' + '
+                head.innerHTML = ' + ';
+            } else if(angka === '-'){
+                calculation += '-';
+                head.innerHTML = ' - ';
+            } else if(angka === '*'){
+                calculation += '*';
+                head.innerHTML = '*';
+            } else if(angka === '/') {
+                calculation += '/';
+                head.innerHTML = '/';
+            } else if(angka === '='){
+                calculation = eval(calculation);
+
+            } else if(angka === 'clear'){            
+                 calculation = '';
+                
+                }
+            head.innerHTML = calculation; 
+            console.log(calculation);
+
+    }
+ 
+    </script>
+  </body>
+</html>
