@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
+    body {
+      color: #fff;
+      background-color: #1a1a1a;
+    }
+    .body1 .line {
+      margin: 0;
+      display: block;
+    }
+    button {
+      cursor: pointer;
+    }
+    button:hover{
+      filter: drop-shadow(1px 2px 3px rgb(207, 207, 207));
+    }
+    .made-in-head:hover {
+      box-shadow: 6px 4px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    /* filter: drop-shadow(1px 2px 3px rgb(0, 0, 0)); */
+  </style>
+  <body>
+    <div class="navbar" style="display: flex; margin-top: 20px">
+      <button
+        id="btn-again"
+        style="width: 120px; height: 45px; margin-left: 10px"
+        onclick="
+        again()"
+      >
+        Again!
+      </button>
+      <p style="margin-left: auto; margin-right: 10px">(Between 1 and 20)</p>
+    </div>
+    <div class="body1" style="text-align: center">
+      <h2>Guess My Number!</h2>
+      <div
+        class="check-number"
+        id="item"
+        style="
+          width: 85px;
+          height: 70px;
+          background-color: #fff;
+          color: #000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          margin-top: 50px;
+        "
+      >
+        <h1 style="font-size: 40px">?</h1>
+      </div>
+    </div>
+    <div
+      class="body-2"
+      style="
+        display: flex;
+        margin-top: 50px;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div class="body-2-1">
+        <input
+          id="nomor"
+          type="number"
+          style="
+            width: 150px;
+            height: 70px;
+            background: none;
+            border: 3px solid #fff;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+          "
+        />
+        <div class="btn-check">
+          <button
+            id="check"
+            style="
+              width: 110px;
+              height: 40px;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+              margin: auto;
+            "
+            onclick=" 
+            user();
+          "
+          >
+            check
+          </button>
+        </div>
+      </div>
+      <div class="body-2-2" style="margin-left: 100px; font-size: 12px">
+        <p style="margin-bottom: 50px" id="sg">Star guessing</p>
+        <p style="margin-bottom: 10px" id="score">Score : 0</p>
+        <p id="hs">HighScore : 0</p>
+      </div>
+    </div>
+    <div
+      class="made-in-head"
+      style="
+        font-size: 11px;
+        width: 400px;
+        height: 130px;
+        background-color: rgb(10, 10, 10);
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        line-height: 20px;
+        border-radius: 10px;
+        letter-spacing: 2px;
+      "
+    >
+      <p style="padding-top: 20px">Dibuat Oleh</p>
+      <p>Name : Ahmad Rizki Afridho</p>
+      <p>Ide Content : Udemy Course</p>
+      <p>Bahasa : JavaScript</p>
+    </div>
+    <script>
+      let inputnumber = document.getElementById('nomor');
+      let item = document.getElementById('item');
+      let starguessing = document.getElementById('sg');
+      let randomnumber = Math.floor(Math.random() * 20 + 1);
+      let score = document.getElementById('score');
+      let HighScore = document.getElementById('hs');
+      let hasilscore = 0;
+      let ScoreTertinggi = 0;
+      function user() {
+        let inputUser = inputnumber.value;
+        inputUser = Number(inputUser);
+        if (inputUser > 20) {
+          alert('Between 1 and 20');
+          inputnumber.value = '';
+        } else if (inputUser <= 20) {
+          item.innerHTML = inputUser;
+          item.style.fontSize = '20px';
+
+          if (!inputUser) {
+            alert('Wrong Numberr');
+            item.innerHTML = '?';
+            item.style.fontSize = '40px';
+            starguessing.innerHTML = 'Enter Number First';
+          } else if (inputUser < randomnumber) {
+            starguessing.innerHTML = 'Too Low';
+            document.body.style.backgroundColor = '#1a1a1a';
+          } else if (inputUser > randomnumber) {
+            starguessing.innerHTML = 'Too High';
+            document.body.style.backgroundColor = '#1a1a1a';
+          } else if (inputUser === randomnumber) {
+            starguessing.innerHTML = 'Your Guess is Right';
+            document.body.style.backgroundColor = '#006400';
+            score.innerHTML = `Score :  ${(hasilscore += 1)}`;
+            HighScore.innerHTML = `High Score :  ${(ScoreTertinggi += 1)}`;
+            randomnumber = Math.floor(Math.random() * 20 + 1);
+          }
+        }
+      }
+
+      function again() {
+        item.innerHTML = '?';
+        inputnumber.value = '';
+        item.style.fontSize = '40px';
+        randomnumber = Math.floor(Math.random() * 20 + 1);
+        sg.innerHTML = 'Star guessing';
+        score.innerHTML = `Score :  ${(hasilscore = 0)}`;
+        document.body.style.backgroundColor = '#1a1a1a';
+      }
+    </script>
+  </body>
+</html>
