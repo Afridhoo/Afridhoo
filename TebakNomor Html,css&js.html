@@ -29,7 +29,7 @@
     button {
       cursor: pointer;
     }
-    button:hover{
+    button:hover {
       filter: drop-shadow(1px 2px 3px rgb(207, 207, 207));
     }
     .made-in-head:hover {
@@ -43,10 +43,8 @@
       <button
         id="btn-again"
         style="width: 120px; height: 45px; margin-left: 10px"
-        onclick="
-        again()"
       >
-        Again!
+        Play Again!
       </button>
       <p style="margin-left: auto; margin-right: 10px">(Between 1 and 20)</p>
     </div>
@@ -67,7 +65,7 @@
           margin-top: 50px;
         "
       >
-        <h1 style="font-size: 40px">?</h1>
+        <h1 style="font-size: 40px" class="tt">?</h1>
       </div>
     </div>
     <div
@@ -105,9 +103,6 @@
               align-items: center;
               margin: auto;
             "
-            onclick=" 
-            user();
-          "
           >
             check
           </button>
@@ -115,7 +110,7 @@
       </div>
       <div class="body-2-2" style="margin-left: 100px; font-size: 12px">
         <p style="margin-bottom: 50px" id="sg">Star guessing</p>
-        <p style="margin-bottom: 10px" id="score">Score : 0</p>
+        <p style="margin-bottom: 10px" id="score">Health : 20</p>
         <p id="hs">HighScore : 0</p>
       </div>
     </div>
@@ -141,54 +136,80 @@
       <p>Bahasa : JavaScript</p>
     </div>
     <script>
-      let inputnumber = document.getElementById('nomor');
+      let randomNumber = Math.floor(Math.random() * 20 + 1);
+      let healt = 20;
+      let hasilhighscore = 0;
+      let sg = document.querySelector('#sg');
+      let tandatanya = document.querySelector('.tt');
+      let score = document.querySelector('#score');
+      let bodyy = document.querySelector('body');
+      let highscore = document.querySelector('#hs');
       let item = document.getElementById('item');
-      let starguessing = document.getElementById('sg');
-      let randomnumber = Math.floor(Math.random() * 20 + 1);
-      let score = document.getElementById('score');
-      let HighScore = document.getElementById('hs');
-      let hasilscore = 0;
-      let ScoreTertinggi = 0;
-      function user() {
-        let inputUser = inputnumber.value;
-        inputUser = Number(inputUser);
-        if (inputUser > 20) {
-          alert('Between 1 and 20');
-          inputnumber.value = '';
-        } else if (inputUser <= 20) {
-          item.innerHTML = inputUser;
-          item.style.fontSize = '20px';
 
-          if (!inputUser) {
-            alert('Wrong Numberr');
-            item.innerHTML = '?';
-            item.style.fontSize = '40px';
-            starguessing.innerHTML = 'Enter Number First';
-          } else if (inputUser < randomnumber) {
-            starguessing.innerHTML = 'Too Low';
-            document.body.style.backgroundColor = '#1a1a1a';
-          } else if (inputUser > randomnumber) {
-            starguessing.innerHTML = 'Too High';
-            document.body.style.backgroundColor = '#1a1a1a';
-          } else if (inputUser === randomnumber) {
-            starguessing.innerHTML = 'Your Guess is Right';
-            document.body.style.backgroundColor = '#006400';
-            score.innerHTML = `Score :  ${(hasilscore += 1)}`;
-            HighScore.innerHTML = `High Score :  ${(ScoreTertinggi += 1)}`;
-            randomnumber = Math.floor(Math.random() * 20 + 1);
+      let checkButton = document
+        .querySelector('#check')
+        .addEventListener('click', function () {
+          let nomorPilihan = Number(document.querySelector('#nomor').value);
+          let changetext = function (teks) {
+            sg.textContent = teks;
+          };
+          if (nomorPilihan <= 0) {
+            changetext('Ketikan Angka 1 - 20');
+          } else if (nomorPilihan > 20) {
+            changetext('Ketikan Angka 1 - 20');
+            if (nomorPilihan > 20 && healt === 0) {
+              changetext('Loserr');
+            }
+          } else if (nomorPilihan <= 20) {
+            if (nomorPilihan !== randomNumber) {
+              if (healt > 1) {
+                 changetext( nomorPilihan < randomNumber ? 'Too Low' : 'To High');
+                tandatanya.textContent = nomorPilihan;
+                bodyy.style.background = '#1a1a1a';
+                score.textContent = `Healt : ${(healt -= 1)}`;
+                item.style.width = '85px';
+              } else if (healt >= 1) {
+                score.textContent = 'You Lose,Play Again!';
+                score.style.color = 'red';
+                changetext('Loserr');
+                sg.style.color = 'red';
+                healt = 0;
+              }
+            }
+            if (nomorPilihan === randomNumber) {
+              if (healt > 0) {
+                score.textContent = `Healt : ${(healt += 1)}`;
+                highscore.textContent = `HighScore : ${(hasilhighscore += 1)}`;
+                tandatanya.textContent = nomorPilihan;
+                changetext('You Win');
+                bodyy.style.background = '#006400';
+                randomNumber = Math.floor(Math.random() * 20 + 1);
+                item.style.width = '150px';
+              } else if (healt >= 1) {
+                score.style.color = 'red';
+                changetext('Loserr');
+                sg.style.color = 'red';
+                score.textContent = 'You Lose,Play Again!';
+              }
+            }
+            console.log(`Health : ${healt}`);
           }
-        }
-      }
-
-      function again() {
-        item.innerHTML = '?';
-        inputnumber.value = '';
-        item.style.fontSize = '40px';
-        randomnumber = Math.floor(Math.random() * 20 + 1);
-        sg.innerHTML = 'Star guessing';
-        score.innerHTML = `Score :  ${(hasilscore = 0)}`;
-        document.body.style.backgroundColor = '#1a1a1a';
-      }
+          let againButton = document
+            .querySelector('#btn-again')
+            .addEventListener('click', function () {
+              score.textContent = `Healt : ${(healt = 20)}`;
+              item.style.width = '85px';
+              tandatanya.textContent = '?';
+              nomorPilihan = Number(document.querySelector('#nomor').value = '');
+              item.style.fontSize = '40px';
+              score.style.color = '#fff';
+              sg.style.color = '#fff';
+              changetext('Star guessing');
+              bodyy.style.background = '#1a1a1a';
+            });
+          console.log(randomNumber);
+        });
+      console.log(`Ini healt ${healt}`);
     </script>
   </body>
 </html>
