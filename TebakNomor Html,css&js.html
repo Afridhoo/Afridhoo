@@ -153,14 +153,14 @@
           let changetext = function (teks) {
             sg.textContent = teks;
           };
-          if (nomorPilihan <= 0) {
+          if (nomorPilihan <= 0 || nomorPilihan > 20) {
             changetext('Ketikan Angka 1 - 20');
-          } else if (nomorPilihan > 20) {
-            changetext('Ketikan Angka 1 - 20');
-            if (nomorPilihan > 20 && healt === 0) {
+            nomorPilihan = Number(document.querySelector('#nomor').value = '');
+          } 
+            else if (nomorPilihan > 20 && healt === 0) {
               changetext('Loserr');
             }
-          } else if (nomorPilihan <= 20) {
+           else if (nomorPilihan <= 20) {
             if (nomorPilihan !== randomNumber) {
               if (healt > 1) {
                  changetext( nomorPilihan < randomNumber ? 'Too Low' : 'To High');
