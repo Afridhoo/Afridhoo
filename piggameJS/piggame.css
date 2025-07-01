@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgba(188, 26, 117, 0.295);
+
+  /* background-color: linear-gradient(45,deg,188,26,117,0.295),#6c1010; */
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   width: 100%;
+   height: 100%;
+}
+.player1 {
+  margin-top: 80px;
+  background-color: rgb(243, 223, 236);
+  width: 35%;
+  height: 540px;
+  text-align: center;
+}
+.player1 h2 {
+  margin-top: 50px;
+  font-size: 35px;
+}
+.player1 .score1,
+.score2 {
+  font-size: 35px;
+}
+.player1 .current {
+  margin-top: 40%;
+  background-color: rgb(175, 201, 212);
+  margin-left: 28%;
+  font-size: 20px;
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+}
+.current p {
+  padding-top: 15px;
+}
+.newgame {
+  top: 18%;
+  position: absolute;
+  display: grid;
+}
+.newgame button {
+  background-color: rgba(255, 255, 255, 0.459);
+  border: none;
+  border-radius: 9px;
+  font-weight: 200;
+  cursor: pointer;
+}
+.newgame button:hover {
+  background-color: rgb(248, 26, 129);
+  color: #fff;
+}
+.newgame .ng {
+  margin-bottom: 260px;
+}
+.ng,
+.kd {
+  width: 150px;
+  height: 37px;
+  font-size: 18px;
+}
+.sp,
+.rl {
+  width: 120px;
+  height: 37px;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+.newgame .sp {
+  margin-bottom: 50px;
+  margin-top: 15px;
+}
+.player2 {
+  margin-top: 80px;
+  background-color: rgba(128, 131, 128, 0.505);
+  width: 35%;
+  height: 540px;
+  text-align: center;
+}
+.player2 h2 {
+  margin-top: 50px;
+  font-size: 35px;
+}
+.player2 .score {
+  font-size: 35px;
+}
+.player2 .current {
+  margin-top: 40%;
+  background-color: rgb(175, 201, 212);
+  margin-left: 28%;
+  font-size: 20px;
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+}
+.current p {
+  padding-top: 15px;
+}
+.newgame {
+  top: 18%;
+  position: absolute;
+  display: grid;
+}
+.newgame button {
+  background-color: rgba(255, 255, 255, 0.459);
+  border: none;
+  border-radius: 9px;
+  font-weight: 200;
+  cursor: pointer;
+
+}
+.newgame button:hover {
+  background-color: rgb(248, 26, 129);
+  color: #fff;
+}
+.newgame .ng {
+  margin-bottom: 50px;
+}
+.ng,
+.kd {
+  width: 150px;
+  height: 37px;
+  font-size: 18px;
+}
+.sp,
+.rl {
+  width: 120px;
+  height: 37px;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+.newgame .sp {
+  margin-bottom: 50px;
+  margin-top: 15px;
+}
+img {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  margin-bottom: 150px;
+}
+.rules {
+
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 650px;
+  top: 25%;
+  left: 25%;
+  border-radius: 5px;
+  z-index: 1000;
+  height: 330px;
+}
+
+.rules h2 {
+  margin-top: 40px;
+  margin-left: 80px;
+}
+.rules p {
+  margin-top: 40px;
+  margin-left: 80px;
+    font-weight: 400;
+}
+.close-rules {
+  margin-left: auto;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+ .close-rules:hover {
+  background-color: #4f3e48;
+  color:  #fff;
+  font-weight: bold;
+ }
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+
+}
