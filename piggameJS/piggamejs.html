@@ -1,64 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pig Game Js</title>
-    
-    <link rel="stylesheet" href="piggame.css">
+    <script src="https://unpkg.com/feather-icons"></script>
 
-</head>
-<body>
+    <link rel="stylesheet" href="piggame.css" />
+  </head>
+  <body>
+  
+  
     <div class="head-teacher">
-
-    
-    <div class="head">
+      <div class="head">
         <div class="overlay"></div>
         <div class="player1">
-            <h2>Player 1</h2>
-            <p class="score1" >0</p>
-            <div class="current">
-                <p>Current</p>
-                <p class="current1">0</p>
-            </div>
+          <h2 class="p1">Player 1</h2>
+          <p class="score1">0</p>
+          <div class="current">
+            <p>Current</p>
+            <p class="current1">0</p>
+          </div>
         </div>
-          <div class="newgame">
-            <button class="ng">New Game</button>
-            <img src="dadu0.png" alt="" class="img">
-            <button class="kd">Kocok Dadu</button>
-            <button class="sp">Simpan Point</button>
-            <button class="rl">Rules</button>
-            </div>
-      
-          
+        <div class="newgame">
+          <button class="ng">New Game</button>
+          <img src="dadu0.png" alt="" class="img" />
+          <button class="kd">Kocok Dadu</button>
+          <button class="sp">Simpan Point</button>
+          <button class="rl">Rules</button>
+        </div>
+
         <div class="player2">
-            <h2>Player 2</h2>
-            <p class="score2">0</p>
-            <div class="current">
-                <p>Current</p>
-                <p class="current2">0</p>
+          <h2 class="p2">Player 2</h2>
+          <p class="score2">0</p>
+          <div class="current">
+            <p>Current</p>
+            <p class="current2">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="rules">
+        <div class="rules-title" style="display: flex">
+          <h2>Rules PigGame</h2>
+          <button class="close-rules">X</button>
+        </div>
+        <p>
+          Pada setiap giliran, pemain melempar dadu sebanyak yang mereka <br />
+          inginkan, dengan tujuan mengumpulkan poin dengan menjumlahkan <br />
+          angka yang muncul di dadu. Namun, jika pemain melempar angka 1,<br />
+          giliran mereka berakhir dan poin yang terkumpul pada giliran <br />
+          tersebut hilang. Pemain juga bisa memilih untuk "hold" <br />
+          (berhenti melempar dadu) untuk menyimpan poin yang telah <br />
+          mereka kumpulkan pada giliran tersebut. <br />
+          Kemenangan Bisa di Raih Jika Salah Satu Point <br />
+          Ada Lebih Besar atau Sama dengan 100 
+          <div class="mysosmed" style="margin-left: 80px;margin-top: 30px;letter-spacing: 10px;">
+              <a href="https://www.instagram.com/rzkafrdh/"><i data-feather="instagram" style=" width: 10px;height: 10px;"></i></a>
+              <a href="https://www.instagram.com/rzkafrdh/"><i data-feather="instagram" style=" width: 10px;height: 10px;"></i></a>
+              <a href="https://www.instagram.com/rzkafrdh/"><i data-feather="instagram" style=" width: 10px;height: 10px;"></i></a>
+             <style>
+                .mysosmed a {
+                    color:  #000;
+                }
+                .mysosmed a:hover{
+                    color:  rgb(42, 112, 117);
+                }
+             </style>
+          </div>
+           
+        </p>
+      </div>
+    </div>
+
+  <div class="score-highscore" style=" background-color: #55a3a3; width: 300px; height: 130px; margin-right: 50px; border-radius: 3px; display: flex; gap: 70px; justify-content: center; align-items: center; margin: auto; margin-top: 10px;border: 1px solid #000000; color: #312525;">
+     
+            <div class="score">
+                <h2>Score</h2>
+                <p class="scoreplayer1">Player 1 : 0</p>
+            
+                <p class="scoreplayer2">Player 2 : 0</p>
+            </div>
+            <div class="highscore" >
+                <h2>highscore</h2>
+                <p class="highscoreplayer1">Player 1 : 0</p>
+               
+                <p class="highscoreplayer2">Player 2 : 0</p>
             </div>
         </div>
-        
-    </div>
-     <div class="rules">
-        <div class="rules-title" style="display: flex;">
-            <h2>Rules PigGame</h2>
-            <button class="close-rules">
-                X
-            </button>
-        </div>
-        <p>Pada setiap giliran, pemain melempar dadu sebanyak yang mereka <br>
-            inginkan, dengan tujuan mengumpulkan poin dengan menjumlahkan <br>
-            angka yang muncul di dadu. Namun, jika pemain melempar angka 1,<br>
-             giliran mereka berakhir dan poin yang terkumpul pada giliran <br>
-             tersebut hilang. Pemain juga bisa memilih untuk "hold" <br>
-              (berhenti melempar dadu) untuk menyimpan poin yang telah <br>
-               mereka kumpulkan pada giliran tersebut.  </p>
-    </div>
-    </div>
-   
-  
-<script src="piggame.js"></script>
-</body>
+
+    <script src="/piggameJS/piggame.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
 </html>
