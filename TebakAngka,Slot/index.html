@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    button {
+      transition: all 0.3s ease-in-out;
+    }
+    button:hover {
+      scale: 1.01;
+      /* background-color: rgb(27, 62, 110); */
+    }
+    .body1-0 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .body1-1 {
+      border: 1px solid #000;
+      width: 100px;
+      height: 100px;
+      filter: drop-shadow(5px 7px 2px rgb(0, 0, 0));
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .body1-1 p {
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .pemain-head {
+      display: flex;
+      margin: 50px 150px;
+      justify-content: space-between;
+    }
+    input {
+      height: 100px;
+      width: 110px;
+      border-radius: 5px;
+      border: 1px solid #9e9c9c;
+      padding-left: 15px;
+      background-color: #fff;
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+      font-size: 30px;
+    }
+    .pemain1-input {
+      display: grid;
+      gap: 10px;
+    }
+    .btn-Konfir {
+      cursor: pointer;
+      width: 128px;
+      height: 40px;
+      border: none;
+      font-size: 12px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 5px;
+      background-color: rgb(21, 74, 148);
+    }
+    .Eror-btn-Konfir {
+      background-color: rgb(148, 148, 148);
+    }
+    .pemain1-input {
+      font-size: 14px;
+      font-weight: 700;
+      color: #c46513;
+    }
+    /* Spin Sekarang BTN Start */
+    .btn-spin-head {
+      margin-top: 30px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    .spin {
+      cursor: pointer;
+      width: 150px;
+      height: 55px;
+      border: none;
+      background-color: rgb(148, 148, 148);
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+
+    .SettingPemain1,
+    .SettingPemain2,
+    .SettingPemain3,
+    .SettingPemain4 {
+      cursor: pointer;
+      width: 115px;
+      height: 40px;
+      border: none;
+      background-color: #0f3a62;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+    .spinTidakEror {
+      background-color: rgb(21, 74, 148);
+    }
+    .title {
+      margin: auto;
+      margin-top: 50px;
+      width: 350px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 5px;
+      filter: drop-shadow(8px 7px 1px rgba(0, 0, 0, 0.6));
+      border-radius: 10px;
+      background-color: rgb(255, 255, 255);
+      color: #000;
+      border: 1px solid #000;
+    }
+
+    .Setting-Pemain-head {
+      top: 4%;
+      bottom: 0;
+      left: 94%;
+      right: 0;
+      position: fixed;
+      z-index: 25;
+      display: flex;
+    }
+    .Active-Setting-Pemain-head2 {
+      left: 82%;
+    }
+    .testing-VarSet {
+      transition: all 0.2s ease-in-out;
+      opacity: 0;
+      visibility: hidden;
+      display: flex;
+      background-color: #ffffff;
+      filter: drop-shadow(0px 4px 4px rgb(0, 0, 0));
+      width: 200px;
+      height: 260px;
+      border-radius: 15px;
+      display: none;
+    }
+
+    .Active-Setting-Pemain-head {
+      opacity: 1;
+      visibility: visible;
+      display: flex;
+    }
+
+    .SettingOver {
+      background-color: #1e5a92;
+      width: 65px;
+      height: 65px;
+      filter: drop-shadow(2px 2px 4px rgb(0, 0, 0));
+      border-radius: 100%;
+      cursor: pointer;
+      font-size: 45px;
+      padding-left: 1px;
+      padding-bottom: 5px;
+      margin-top: 10px;
+      border: none;
+    }
+
+    .SettinOverHover {
+      background-color: rgb(19, 58, 74);
+      position: absolute;
+      left: 75%;
+      top: 0%;
+      z-index: 29;
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+      padding-top: 3px;
+    }
+    .settingPemain-body0 {
+      margin-left: 24px;
+      padding: 20px 20px 20px 20px;
+      display: grid;
+      gap: 21px;
+    }
+
+    /* Spin Sekarang BTN End */
+    .ayer-body0 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-top: 30px;
+    }
+    .ayer-body1,
+    .ayer-body2 {
+      border: 1px solid #000;
+      filter: drop-shadow(6px 6px 1px rgba(0, 0, 0));
+      background-color: #fff;
+      width: 180px;
+      height: 100px;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      color: #000;
+      border-radius: 9px;
+      text-align: center;
+      gap: 2px;
+      padding-bottom: 5px;
+    }
+    .ayer-head p {
+      color: #c46513;
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .ayer-body1 h2 {
+      color: #1d6dae;
+      font-weight: 700;
+      font-size: 35px;
+    }
+    .ayer-body2 h2 {
+      color: #c81919;
+      font-weight: 700;
+      font-size: 35px;
+    }
+    .Ket-Ipt {
+      position: absolute;
+      top: 25.1%;
+      z-index: 5;
+      color: #000000;
+      font-size: 10px;
+      background-color: #fff;
+    }
+    .Ket-Ipt p {
+      font-size: 7px;
+    }
+  </style>
+  <body>
+    <!-- Setting Pemain Btn Start -->
+    <div class="Setting-Pemain-head">
+      <div class="testing-VarSet">
+        <div class="settingPemain-body0">
+          <!-- BTN Setting Pemain Start -->
+          <button class="SettingPemain1">Atur Pemain 1</button>
+          <button class="SettingPemain2">Atur Pemain 2</button>
+          <button class="SettingPemain3">Atur Pemain 3</button>
+          <button class="SettingPemain4">Atur Pemain 4</button>
+          <!-- BTN Setting Pemain End -->
+        </div>
+      </div>
+      <div class="btn-over-head">
+        <button class="SettingOver">⚙️</button>
+      </div>
+    </div>
+    <!-- Setting Pemain Btn End -->
+
+    <div class="title"><h2>Masukan Angka 1 - 10</h2></div>
+    <div class="pemain-head">
+      <div class="pemain1-head">
+        <div class="pemain1-input">
+          <p class="AngkaPlayer1">Player1</p>
+          <p class="Ket-Ipt">Masukan Angka</p>
+          <input type="number" class="ipt1" />
+          <button class="btn-Konfir">Konfirmasi Pilihan</button>
+        </div>
+      </div>
+      <div class="pemain1-head">
+        <div class="pemain1-input">
+          <p class="AngkaPlayer2">Player2</p>
+          <p class="Ket-Ipt">Masukan Angka</p>
+          <input type="number" class="ipt2" />
+          <button class="btn-Konfir">Konfirmasi Pilihan</button>
+        </div>
+      </div>
+      <div class="pemain1-head">
+        <div class="pemain1-input">
+          <p class="AngkaPlayer3">Player3</p>
+          <p class="Ket-Ipt">Masukan Angka</p>
+          <input type="number" class="ipt3" />
+          <button class="btn-Konfir">Konfirmasi Pilihan</button>
+        </div>
+      </div>
+      <div class="pemain1-head">
+        <div class="pemain1-input">
+          <p class="Ket-Ipt">Masukan Angka</p>
+          <p class="AngkaPlayer4">Player4</p>
+          <input type="number" class="ipt4" />
+          <button class="btn-Konfir">Konfirmasi Pilihan</button>
+        </div>
+      </div>
+    </div>
+    <div class="body1-0">
+      <div class="body1-1">
+        <p class="hasilNumber">1</p>
+      </div>
+    </div>
+
+    <!-- btn Spin Sekarang Start -->
+    <div class="btn-spin-head">
+      <button class="spin">Spin Sekarang🎲</button>
+    </div>
+    <!-- btn Spin Sekarang End -->
+
+    <!-- Hasil Angka Dan Player Yang Menang Start-->
+    <div class="ayer-head">
+      <div class="ayer-body0">
+        <div class="ayer-body1">
+          <p>Angka Yang Keluar</p>
+          <h2 class="AngkaygMenang">??</h2>
+        </div>
+        <div class="ayer-body2">
+          <p>Player Yang Menang</p>
+          <h2 class="PlayerygMenang">Player?</h2>
+        </div>
+      </div>
+    </div>
+    <!-- Hasil Angka Dan Player Yang Menang End -->
+
+    <!-- Js Start -->
+    <script>
+      // Input 1 - 4  (Pemain) Start
+      let input1 = document.querySelector(".ipt1");
+      let input2 = document.querySelector(".ipt2");
+      let input3 = document.querySelector(".ipt3");
+      let input4 = document.querySelector(".ipt4");
+      // Input 1 - 4  (Pemain) End
+
+      // Konfirmasi Angka (Pemain) Start
+      let angkaPlayer1 = document.querySelector(".AngkaPlayer1");
+      let angkaPlayer2 = document.querySelector(".AngkaPlayer2");
+      let angkaPlayer3 = document.querySelector(".AngkaPlayer3");
+      let angkaPlayer4 = document.querySelector(".AngkaPlayer4");
+      // Konfirmasi Angka (Pemain) End
+
+      //   Konfirmasi Pilihan Pemain (Number Masih Bisa Di Ubah) Start
+      let btnKonfir = document.querySelectorAll(".btn-Konfir");
+      //   Konfirmasi Pilihan Pemain (Number Masih Bisa Di Ubah) End
+
+      // Angka Yang Di hasilkan Sistem Alias Di Setting Start
+      let hasilAngka = document.querySelector(".hasilNumber");
+      // Angka Yang Di hasilkan Sistem Alias Di Setting End
+
+      // Spin Angka Start
+      let spin = document.querySelector(".spin");
+      // Spin Angka End
+
+      //Variable Agar Setiap Player Yang Telah Memilih Nomor Klick Konfirmasi Terlebih Dahulu Sebelum Spin Di Click
+      let a, b, c, d;
+      // Alogritma Start
+
+      let e, f, g, h;
+
+      //Variable Setting Pemain 1 - 4 Start
+      let setPemain1 = document.querySelector(".SettingPemain1");
+      let setPemain2 = document.querySelector(".SettingPemain2");
+      let setPemain3 = document.querySelector(".SettingPemain3");
+      let setPemain4 = document.querySelector(".SettingPemain4");
+      //Variable Setting Pemain 1 - 4 End
+
+      //Variable Ikon Setting Pemain Start
+      let ikonSet = document.querySelector(".SettingOver");
+      let testVar = document.querySelector(".testing-VarSet");
+      let testLeft = document.querySelector(".Setting-Pemain-head");
+      //Variable Ikon Setting Pemain End
+
+      //Var Hasil Akhir Yaitu Hasil dan Siapa Yang Menang
+      let HasilAngka = document.querySelector(".AngkaygMenang");
+      let HasilPlayer = document.querySelector(".PlayerygMenang");
+
+      // Button Ikon Setting Click Start
+      let r = 0;
+
+      ikonSet.addEventListener("click", function () {
+        if (r === 0) {
+          testVar.classList.add("Active-Setting-Pemain-head");
+          ikonSet.classList.add("SettinOverHover");
+          testLeft.classList.add("Active-Setting-Pemain-head2");
+          ikonSet.textContent = "❌";
+          r = 1;
+        } else if (r === 1) {
+          testVar.classList.remove("Active-Setting-Pemain-head");
+          ikonSet.classList.remove("SettinOverHover");
+          testLeft.classList.remove("Active-Setting-Pemain-head2");
+          ikonSet.textContent = "⚙️";
+          r = 0;
+        }
+      });
+
+      //Btn Konfir Pemain
+      for (let i = 0; i < btnKonfir.length; i++) {
+        btnKonfir[i].addEventListener("click", function () {
+          input1 = Number(document.querySelector(".ipt1").value);
+          input2 = Number(document.querySelector(".ipt2").value);
+          input3 = Number(document.querySelector(".ipt3").value);
+          input4 = Number(document.querySelector(".ipt4").value);
+
+          if (input1 > 10 || input2 > 10 || input3 > 10 || input4 > 10) {
+            alert("Jangan Memasukan Angka Lebih Dari 10");
+          } else {
+            if (i === 0) {
+              if (input1 < 1) {
+                alert("Anda Belum Memasukan Nomor Untuk Player1");
+              } else {
+                if (e === false) {
+                  angkaPlayer1.style.color = "#c46513";
+                }
+                a = 1;
+                angkaPlayer1.textContent = `Player1 , Angka : ${input1}`;
+              }
+            } else if (i === 1) {
+              if (input2 < 1) {
+                alert("Anda Belum Memasukan Nomor Untuk Player2");
+              } else {
+                if (f === false) {
+                  angkaPlayer2.style.color = "#c46513";
+                }
+                b = 1;
+                angkaPlayer2.textContent = `Player2 , Angka : ${input2}`;
+              }
+            } else if (i === 2) {
+              if (input3 < 1) {
+                alert("Anda Belum Memasukan Nomor Untuk Player3");
+              } else {
+                if (g === false) {
+                  angkaPlayer3.style.color = "#c46513";
+                }
+                c = 1;
+                angkaPlayer3.textContent = `Player3 , Angka : ${input3}`;
+              }
+            } else if (i === 3) {
+              if (input4 < 1) {
+                alert("Anda Belum Memasukan Nomor Untuk Player4");
+              } else {
+                if (h === false) {
+                  angkaPlayer4.style.color = "#c46513";
+                }
+                d = 1;
+                angkaPlayer4.textContent = `Player4 , Angka : ${input4}`;
+              }
+            }
+            if (a === 1 && b === 1 && c === 1 && d === 1) {
+              spin.classList.add("spinTidakEror");
+            }
+          }
+        });
+      }
+
+      //Spin Button
+      spin.addEventListener("click", function () {
+        input1 = Number(document.querySelector(".ipt1").value);
+        input2 = Number(document.querySelector(".ipt2").value);
+        input3 = Number(document.querySelector(".ipt3").value);
+        input4 = Number(document.querySelector(".ipt4").value);
+
+        if (input1 < 1 || input2 < 1 || input3 < 1 || input4 < 1) {
+          alert("Tunggu Player Lain Mengisi Semua Nomor");
+        } else if (
+          a === undefined &&
+          b === undefined &&
+          c === undefined &&
+          d === undefined
+        ) {
+          alert("Semua Player Belum Click Konfirmasi");
+        } else if (a === undefined) {
+          alert("Player1 Belum Click Konfirmasi");
+        } else if (b === undefined) {
+          alert("Player2 Belum Click Konfirmasi");
+        } else if (c === undefined) {
+          alert("Player3 Belum Click Konfirmasi");
+        } else if (d === undefined) {
+          alert("Player4 Belum Click Konfirmasi");
+        } else if (a === false && b === false && c === false && d === false) {
+          alert("Semua Player Belum Click Konfirmasi Untuk Angka Baru ");
+        } else if (a === false) {
+          alert("Player 1 Belum Click Konfirmasi Angka Baru ");
+        } else if (b === false) {
+          alert("Player 2 Belum Click Konfirmasi Angka Baru ");
+        } else if (c === false) {
+          alert("Player 3 Belum Click Konfirmasi Angka Baru ");
+        } else if (d === false) {
+          alert("Player 4 Belum Click Konfirmasi Angka Baru ");
+        } else {
+          if (a === 1 || b === 1 || c === 1 || d === 1) {
+            let acakNomor = Math.floor(Math.random() * 10 + 1);
+            while (
+              input1 === acakNomor ||
+              input2 === acakNomor ||
+              input3 === acakNomor ||
+              input4 === acakNomor
+            ) {
+              acakNomor = Math.floor(Math.random() * 10 + 1);
+            }
+            hasilAngka.textContent = acakNomor;
+          }
+          if (a === 2) {
+            alert(`Pemain 1 Menang Angka Yang Di Pilih ${input1}`);
+            hasilAngka.textContent = acakNomor;
+            HasilAngka.textContent = acakNomor;
+            HasilPlayer.textContent = "Player1";
+          } else if (b === 2) {
+            alert(`Pemain 2 Menang Angka Yang Di Pilih ${input2}`);
+            hasilAngka.textContent = acakNomor;
+            HasilAngka.textContent = acakNomor;
+            HasilPlayer.textContent = "Player2";
+          } else if (c === 2) {
+            alert(`Pemain 3 Menang Angka Yang Di Pilih ${input3}`);
+            hasilAngka.textContent = acakNomor;
+            HasilAngka.textContent = acakNomor;
+            HasilPlayer.textContent = "Player3";
+          } else if (d === 2) {
+            alert(`Pemain 4 Menang Angka Yang Di Pilih ${input4}`);
+            hasilAngka.textContent = acakNomor;
+            HasilAngka.textContent = acakNomor;
+            HasilPlayer.textContent = "Player4";
+          }
+
+          input1 = Number((document.querySelector(".ipt1").value = ""));
+          input2 = Number((document.querySelector(".ipt2").value = ""));
+          input3 = Number((document.querySelector(".ipt3").value = ""));
+          input4 = Number((document.querySelector(".ipt4").value = ""));
+
+          a = false;
+          b = false;
+          c = false;
+          d = false;
+          e = false;
+          f = false;
+          g = false;
+          h = false;
+          spin.classList.remove("spinTidakEror");
+          angkaPlayer1.style.color = "#ff0000";
+          angkaPlayer2.style.color = "#ff0000";
+          angkaPlayer3.style.color = "#ff0000";
+          angkaPlayer4.style.color = "#ff0000";
+        }
+      });
+
+      //   Button Setting Pemain Start
+      setPemain1.addEventListener("click", function () {
+        if (a === false || b === false || c === false || d === false) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else if (
+          a === undefined ||
+          b === undefined ||
+          c === undefined ||
+          d === undefined
+        ) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else {
+          a = 2;
+          b = 1;
+          c = 1;
+          d = 1;
+          input1 = Number(document.querySelector(".ipt1").value);
+          acakNomor = input1;
+          alert(acakNomor);
+        }
+      });
+      setPemain2.addEventListener("click", function () {
+        if (a === false || b === false || c === false || d === false) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else if (
+          a === undefined ||
+          b === undefined ||
+          c === undefined ||
+          d === undefined
+        ) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else {
+          a = 1;
+          b = 2;
+          c = 1;
+          d = 1;
+          input2 = Number(document.querySelector(".ipt2").value);
+          acakNomor = input2;
+          alert(acakNomor);
+        }
+      });
+      setPemain3.addEventListener("click", function () {
+        if (a === false || b === false || c === false || d === false) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else if (
+          a === undefined ||
+          b === undefined ||
+          c === undefined ||
+          d === undefined
+        ) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else {
+          a = 1;
+          b = 1;
+          c = 2;
+          d = 1;
+          input3 = Number(document.querySelector(".ipt3").value);
+          acakNomor = input3;
+          alert(acakNomor);
+        }
+      });
+      setPemain4.addEventListener("click", function () {
+        if (a === false || b === false || c === false || d === false) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else if (
+          a === undefined ||
+          b === undefined ||
+          c === undefined ||
+          d === undefined
+        ) {
+          alert("Tunggu Pemain Mengclick Konfrimasi Terlebih Dahulu");
+        } else {
+          a = 1;
+          b = 1;
+          c = 1;
+          d = 2;
+          input4 = Number(document.querySelector(".ipt4").value);
+          acakNomor = input4;
+          alert(acakNomor);
+        }
+      });
+      //   Button Setting Pemain End
+
+    </script>
+    <!-- Js End -->
+  </body>
+</html>
